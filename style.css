@@ -8,7 +8,7 @@ body {
 }
 
 #game-container {
-  position: relative;
+  position: absolute;
   width: 360px;           /* fixed width */
   height: 600px;          /* fixed height */
   background: url('bg.png');
