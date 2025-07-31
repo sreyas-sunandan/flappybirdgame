@@ -12,35 +12,48 @@ function createPipe() {
   const containerHeight = container.offsetHeight;
   const containerWidth = container.offsetWidth;
   const pipeWidth = 60;
-  const heightTop = Math.random() * (containerHeight - gap - 100); // margin
+  const pipeImageHeight = 512; // original height of image (adjust if needed)
+
+  const heightTop = Math.random() * (containerHeight - gap - 100); // min margin
+
+  // Create wrapper divs
+  const topWrapper = document.createElement('div');
+  const bottomWrapper = document.createElement('div');
 
   // Top pipe
-  const top = document.createElement('img');
-  //top.src = 'pipe.png';
-  top.classList.add('pipe');
-  top.style.position = 'absolute';
-  top.style.width = `${pipeWidth}px`;     // fixed width
-  top.style.height = `${heightTop}px`;    // variable height
-  top.style.top = '0';
-  top.style.left = `${containerWidth + 10}px`;
-  top.style.transform = 'scaleY(-1)';     // flip image upside-down for top pipe
-  top.style.objectFit = 'fill';
+	const top = document.createElement('img');
+	top.src = 'pipe.png';
+	top.style.transform = 'scaleY(-1)';
+	top.style.width = '100%';
+	top.style.height = 'auto';
+
+	topWrapper.appendChild(top);
+	topWrapper.style.position = 'absolute';
+	topWrapper.style.width = `${pipeWidth}px`;
+	topWrapper.style.height = `${heightTop}px`;
+	topWrapper.style.top = '0';
+	topWrapper.style.left = `${containerWidth + 10}px`;
+	topWrapper.style.overflow = 'hidden';
+
 
   // Bottom pipe
   const bottom = document.createElement('img');
-  //bottom.src = 'pipe.png';
-  bottom.classList.add('pipe');
-  bottom.style.position = 'absolute';
-  bottom.style.width = `${pipeWidth}px`;
-  bottom.style.height = `${containerHeight - heightTop - gap}px`;
-  bottom.style.bottom = '0';
-  bottom.style.left = `${containerWidth + 10}px`;
-  bottom.style.objectFit = 'fill';
+  bottom.src = 'pipe.png';
+  bottom.style.width = '100%';
+  bottom.style.height = 'auto';
 
-  container.appendChild(top);
-  container.appendChild(bottom);
+  bottomWrapper.appendChild(bottom);
+  bottomWrapper.style.position = 'absolute';
+  bottomWrapper.style.width = `${pipeWidth}px`;
+  bottomWrapper.style.height = `${containerHeight - heightTop - gap}px`;
+  bottomWrapper.style.bottom = '0';
+  bottomWrapper.style.left = `${containerWidth + 10}px`;
+  bottomWrapper.style.overflow = 'hidden';
 
-  pipes.push({ top, bottom, passed: false });
+  container.appendChild(topWrapper);
+  container.appendChild(bottomWrapper);
+
+  pipes.push({ top: topWrapper, bottom: bottomWrapper, passed: false });
 }
 
 function jump() {
