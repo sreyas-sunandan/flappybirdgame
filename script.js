@@ -20,17 +20,22 @@ function createPipe() {
   const topWrapper = document.createElement('div');
   const bottomWrapper = document.createElement('div');
 
-  // Top pipe
+ // Create top pipe image
 	const top = document.createElement('img');
 	top.src = 'pipe.png';
 	top.style.transform = 'scaleY(-1)';
 	top.style.width = '100%';
 	top.style.height = 'auto';
+	top.style.position = 'absolute';
+	top.style.bottom = '0'; // Align the bottom of the image to the bottom of the wrapper
 
+	// Add image to wrapper
 	topWrapper.appendChild(top);
+
+	// Style the wrapper
 	topWrapper.style.position = 'absolute';
 	topWrapper.style.width = `${pipeWidth}px`;
-	topWrapper.style.height = `${heightTop}px`;
+	topWrapper.style.height = `${heightTop}px`; // only show this much height
 	topWrapper.style.top = '0';
 	topWrapper.style.left = `${containerWidth + 10}px`;
 	topWrapper.style.overflow = 'hidden';
