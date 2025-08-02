@@ -8,13 +8,8 @@ body {
 }
 
 #game-container {
-<<<<<<< HEAD
-  position: absolute;
+  position: fixed;
   width: 360px;           /* fixed width */
-=======
-  position: relative;
-  width: 390px;           /* fixed width */
->>>>>>> e83cdb3 (version-1.02)
   height: 600px;          /* fixed height */
   background: url('bg.png');
   overflow: hidden;
